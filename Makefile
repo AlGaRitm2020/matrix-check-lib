@@ -1,4 +1,4 @@
-TARGET = matrix-check-lib
+TARGET = matrix-check-lib.o
 CC = gcc
 
 SRC_DIR = ./src/
