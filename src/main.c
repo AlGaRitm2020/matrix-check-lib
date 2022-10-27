@@ -50,6 +50,13 @@ int main() {
 
 	delete_matrix(fill_abs);
 
+	printf("test copyed matrix\n");
+	Matrix* other = copy_matrix(some);
+	if (is_equal(some, other) == 1)
+		printf("This matrices are equeal\n");
+	else
+		printf("This matrices are different\n");
+
 
 	return 0;
 }

@@ -60,6 +60,20 @@ Matrix* fill_random(Matrix* self, int left_border, int right_border) {
 	
 }
 
+
+#define TRUE 1
+#define FALSE 0
+int is_equal(Matrix* self, Matrix* other) {
+	if (self->rows != other->rows || self->columns != other-> columns)
+		return FALSE;
+	for(int i = 0; i < self->rows; i++) 
+		for(int j = 0; j < self->columns; j++) 				
+			if (self->elements[i][j] != other->elements[i][j]) 
+				return FALSE;
+			
+	return TRUE;
+} 
+
 void delete_matrix(Matrix* self) {
 	/*
 	 * Removing all data from Matrix structure

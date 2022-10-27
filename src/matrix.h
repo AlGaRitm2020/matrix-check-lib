@@ -16,5 +16,5 @@ Matrix* copy_matrix(Matrix* self);
 Matrix* mul_by_num(Matrix* self, int num);
 Matrix* fill_ascending(Matrix* self);
 void delete_matrix(Matrix* self);
-
+int is_equal(Matrix* some, Matrix* other);
 
