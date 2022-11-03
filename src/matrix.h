@@ -12,7 +12,11 @@ typedef struct {
 } Matrix; 
 
 Matrix* create_matrix(int rows, int columns, int **elems);
+Matrix* create_from_scratch(int rows, int columns);
 Matrix* copy_matrix(Matrix* self);
+Matrix* multiply_matrix(Matrix* self, Matrix* other);
+
+Matrix* print_matrix(Matrix* self);
 Matrix* mul_by_num(Matrix* self, int num);
 Matrix* fill_ascending(Matrix* self);
 void delete_matrix(Matrix* self);

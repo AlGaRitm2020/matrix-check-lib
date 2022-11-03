@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "matrix.h"
-
+/*
 int main() {
 	int **arr = (int **)malloc(10 * sizeof(int*));	
 	for(int i = 0; i < 10; i++) {
@@ -56,7 +56,17 @@ int main() {
 		printf("This matrices are equeal\n");
 	else
 		printf("This matrices are different\n");
+	printf("Filled ascending matrix: \n");
+
+	Matrix* filled = fill_ascending(some);
+		
+	for(int i = 0; i < n; i++) {
+		for(int j = 0; j < m; j++)
+			printf("%d ", fill_abs->elements[i][j]);
+		printf("\n");
+	}
 
 
 	return 0;
 }
+*/

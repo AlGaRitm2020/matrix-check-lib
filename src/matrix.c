@@ -17,6 +17,23 @@ Matrix* create_matrix(int rows, int columns, int** elems) {
 
 }
 
+Matrix* create_from_scratch(int rows, int columns) {
+	// creating empty array rowsXcolumns
+	
+	int** zero_array = (int**)malloc(sizeof(int*) * rows);
+	for(int i = 0; i < rows; i++){
+		zero_array[i] = (int *)malloc(sizeof(int) * columns);
+		for(int j = 0; j < columns; j++)
+			zero_array[i][j] = 0;
+	}
+	
+
+	// calling funtion that creates matrix from array
+	Matrix* empty_m = create_matrix(rows, columns, zero_array);
+	return empty_m; 
+
+}
+
 Matrix* copy_matrix(Matrix* self) {
 	/* 
 	 * Making deep copy of Matrix 
@@ -33,7 +50,18 @@ Matrix* copy_matrix(Matrix* self) {
 	return dest_m;
 
 }
+Matrix* print_matrix(Matrix* self) {
+	printf("\nMatrix %dx%d {\n", self->rows, self->columns);
 
+	for(int i = 0; i < self->rows; i++) {
+		printf(" ");
+		for(int j = 0; j < self->columns; j++) {
+			printf("%d ", self->elements[i][j]);
+		}
+		printf("\n");
+	}
+	printf("}");
+}
 Matrix* mul_by_num(Matrix* self, int num) {
 	
 	Matrix* multiplyed_m = copy_matrix(self); 
@@ -45,6 +73,34 @@ Matrix* mul_by_num(Matrix* self, int num) {
 	return multiplyed_m;
 }
 
+Matrix* multiply_matrix(Matrix* self_orig, Matrix* other_orig) {
+
+	
+	Matrix* self = create_matrix(self_orig->rows, self_orig->columns, self_orig->elements);
+	Matrix* other = create_matrix(other_orig->rows, other_orig->columns, other_orig->elements);
+
+	Matrix* result_m = create_from_scratch(self->rows, other->columns); 
+
+	for(int i = 0; i < result_m->rows; i++) {
+		for(int j = 0; j < result_m->columns; j++) {
+			int chain = 0;
+			for(int k = 0; k < self->rows; k++)
+			{
+				int chain_elem = 0;
+				for(int l = 0; l < other->columns; l++) {
+					chain_elem = self->elements[i][l] + other->elements[k][j];
+				}
+				chain += chain_elem;
+			}
+
+			result_m->elements[i][j] = chain;
+		}
+
+	}
+	
+	return result_m;	
+}
+
 Matrix* fill_ascending(Matrix* self) {
 	Matrix* filled_m = copy_matrix(self);
 
@@ -53,11 +109,20 @@ Matrix* fill_ascending(Matrix* self) {
 			filled_m->elements[i][j] = j + (filled_m->columns * i);
 
 	return filled_m;
+	return 0;
+
 
 }
 
 Matrix* fill_random(Matrix* self, int left_border, int right_border) {
+	srand(time(0));
+	Matrix* rand_m = copy_matrix(self);
+
+	for(int i = 0; i < rand_m->rows; i++)
+		for(int j = 0; j < rand_m->columns; j++)
+			rand_m->elements[i][j] = left_border + rand() % (right_border - left_border);
 	
+	return rand_m;
 }
 
 
@@ -73,6 +138,9 @@ int is_equal(Matrix* self, Matrix* other) {
 			
 	return TRUE;
 } 
+
+
+
 
 void delete_matrix(Matrix* self) {
 	/*
