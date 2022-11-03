@@ -72,19 +72,14 @@ int main() {
 			arr[i][j] = 0;
 	}
 	*/
-	
-//printf("dfasfd\n");	
 	Matrix* a = create_from_scratch(2,2);
 	//Matrix* c = create_matrix(3,3,arr);
 	//Matrix* b = copy_matrix(c);
 
 	print_matrix(a);
 
-	/*
-	int **arr_b1 = (int **)malloc(10 * sizeof(int*));	
-	for(int i = 0; i < 10; i++) {
-		arr_b1[i] = (int *)malloc(10 * sizeof(int));
-	}
+	
+	int** arr_b1 = create_double_array(2,3);
 
 	arr_b1[0][0] = 1; 
 	arr_b1[0][1] = 2; 	
@@ -95,10 +90,9 @@ int main() {
 
 	Matrix* base_1 = create_matrix(2, 3,arr_b1 );
 
-	int **arr_b2 = (int **)malloc(10 * sizeof(int*));	
-	for(int i = 0; i < 10; i++) {
-		arr_b1[i] = (int *)malloc(10 * sizeof(int));
-	}
+	print_matrix(base_1);
+
+	int **arr_b2 = create_double_array(3, 2);
 
 	arr_b2[0][0] = 1;
 	arr_b2[0][1] = 2; 	
@@ -110,13 +104,8 @@ int main() {
 	Matrix* base_2 = create_matrix(3, 2,arr_b2);
 
 	Matrix* actual = multiply_matrix(base_1, base_2);
-	
-	for(int i = 0; i < actual->rows; i++) {
-		for(int j = 0; j < actual->columns; j++)
-			printf("%d ", actual->elements[i][j]);
-		printf("\n");
-	}
-*/
+		
+	print_matrix(actual);
 
 	return 0;
 }

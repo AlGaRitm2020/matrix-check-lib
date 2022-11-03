@@ -19,6 +19,7 @@ Matrix* multiply_matrix(Matrix* self, Matrix* other);
 Matrix* print_matrix(Matrix* self);
 Matrix* mul_by_num(Matrix* self, int num);
 Matrix* fill_ascending(Matrix* self);
+int** create_double_array(int rows, int columns);
 void delete_matrix(Matrix* self);
 int is_equal(Matrix* some, Matrix* other);
 

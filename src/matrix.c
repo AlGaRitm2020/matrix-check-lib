@@ -4,6 +4,22 @@
 
 #include "matrix.h"
 
+
+Matrix* ERROR = NULL;
+
+int** create_double_array(int rows, int columns){
+	int** array = (int **)malloc(sizeof(int*) * rows);
+
+	for(int i = 0; i < rows; i++) {
+		array[i] = (int *)malloc(sizeof(int) * columns);
+		for(int j = 0; j < columns; j++) {
+			array[i][j] = 0;
+		}
+	}
+
+	return array;
+}
+
 Matrix* create_matrix(int rows, int columns, int** elems) {
 	/* 
 	 * Creates Marix sturct by passing size and double array 
@@ -62,6 +78,10 @@ Matrix* print_matrix(Matrix* self) {
 	}
 	printf("}");
 }
+
+
+
+
 Matrix* mul_by_num(Matrix* self, int num) {
 	
 	Matrix* multiplyed_m = copy_matrix(self); 
@@ -72,6 +92,7 @@ Matrix* mul_by_num(Matrix* self, int num) {
 	
 	return multiplyed_m;
 }
+
 
 Matrix* multiply_matrix(Matrix* self_orig, Matrix* other_orig) {
 
